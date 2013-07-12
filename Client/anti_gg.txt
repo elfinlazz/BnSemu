@@ -1,0 +1,17 @@
+004D8142  |. E8 49FCFFFF    CALL client_d.004D7D90
+004D8147  |. 85C0           TEST EAX,EAX
+004D8149  |. 74 09          JE SHORT client_d.004D8154
+004D814B     90             NOP
+004D814C     90             NOP
+004D814D     90             NOP
+004D814E     90             NOP
+004D814F     90             NOP
+004D8150  |. 84C0           TEST AL,AL
+004D8152  |. 75 48          JNZ SHORT client_d.004D819C
+004D8154  |> 83EC 1C        SUB ESP,0x1C
+004D8157  |. 8BCC           MOV ECX,ESP  
+
+
+004D8152  |. 75 48          JNZ SHORT client_d.004D819C
+будет прыгать прямо на call (self protect) который тоже можно занопать
+Или сразу после 004D8149  |. 74 09          JE SHORT client_d.004D8154 сделать JMP на резултирующую mov ax (eax), 1
